@@ -73,27 +73,25 @@ let tasks = monday.concat(tuesday);
 console.log(tasks);
 
 //*
-tasks.forEach(function(_f,i){
-    tasks[i].duration = tasks[i].duration / 60;
+tasks.forEach(function(task){
+    task.duration = task.duration / 60;
     return tasks;
 });
 console.log(tasks);
 
 //**
-const twoHoursOrMore = tasks.filter(function(f,i) { 
-    return (f,tasks[i].duration >= 2);
-});
+const twoHoursOrMore = tasks.filter(task => task.duration >= 2);
 console.log(twoHoursOrMore);
 
 //***
 const myCost = 10;
-const myBilling = twoHoursOrMore.map(function(f,i) {
-    return (f,twoHoursOrMore[i].duration*myCost);
+const myBilling = twoHoursOrMore.map(function(task) {
+    return task.duration * myCost;
 });
 console.log(myBilling);  
 
 //****
 const myAmount = myBilling.reduce(function(f,i) {
     return f+i;
-})
+});
 console.log(`my total payment amount is ${myAmount} €`);
